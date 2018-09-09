@@ -25,7 +25,9 @@ const appRoutes: Routes = [
     imports: [
         RouterModule.forRoot(appRoutes)
     ],
-    exports: [RouterModule] // what should be accessible to modules importing this modules?
+    exports: [
+        RouterModule
+    ] // what should be accessible to modules importing this modules?
     // exporting configured RouterModule
 })
 
