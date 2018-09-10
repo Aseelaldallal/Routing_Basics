@@ -14,10 +14,15 @@ const appRoutes: Routes = [
     { path: 'users', component: UsersComponent, children: [
       { path: ':id/:name', component: UserComponent }
     ]}, 
-    { path: 'servers', canActivate: [ AuthGaurd ], component: ServersComponent, children: [
-      { path: ':id', component: ServerComponent},
-      { path: ':id/edit', component: EditServerComponent }
-    ]},
+    { path: 'servers', 
+      // canActivate: [ AuthGaurd ], 
+      canActivateChild: [AuthGaurd],
+      component: ServersComponent, 
+      children: [
+          { path: ':id', component: ServerComponent},
+          { path: ':id/edit', component: EditServerComponent }
+      ]
+    },
     { path: 'not-found', component: PageNotFoundComponent },
     { path: '**', redirectTo: '/not-found'} // wildcard route - ORDER IMPORTANT: Has to be the last
   ];
