@@ -16,7 +16,7 @@ const appRoutes: Routes = [
     ]}, 
     { path: 'servers', 
       // canActivate: [ AuthGaurd ], 
-      canActivateChild: [AuthGaurd],
+      canActivateChild: [AuthGaurd],  // now only child routes are protected
       component: ServersComponent, 
       children: [
           { path: ':id', component: ServerComponent},
