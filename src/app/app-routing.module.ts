@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthGaurd } from "./auth-gaurd.service";
 import { CanDeactivateGaurd } from "./servers/edit-server/can-deactivate-gaurd.service";
 import { ErrorPageComponent } from "./error-page/error-page.component";
+import { ServerResolver } from "./servers/server/server-resolver.service";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent }, //localhost:4200
@@ -21,7 +22,7 @@ const appRoutes: Routes = [
       canActivateChild: [AuthGaurd],  // now only child routes are protected
       component: ServersComponent, 
       children: [
-          { path: ':id', component: ServerComponent},
+          { path: ':id', component: ServerComponent, resolve: {server: ServerResolver}}, // this will map the data this resolver gives us back to server property
           { path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGaurd] } // angular will run this gaurd when we try to leave this path
       ]
     },
