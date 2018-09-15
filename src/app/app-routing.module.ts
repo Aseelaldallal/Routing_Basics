@@ -33,7 +33,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes, {useHash: true}) // informs web server only care about the part in the url before hashtag - so this will also run on servers which don't return index.html (make sure your server returns index.html, but if you cant then this useHash)
     ],
     exports: [
         RouterModule
