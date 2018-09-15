@@ -9,6 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGaurd } from "./auth-gaurd.service";
 import { CanDeactivateGaurd } from "./servers/edit-server/can-deactivate-gaurd.service";
+import { ErrorPageComponent } from "./error-page/error-page.component";
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent }, //localhost:4200
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
       ]
     },
     { path: 'not-found', component: PageNotFoundComponent },
-    { path: '**', redirectTo: '/not-found'} // wildcard route - ORDER IMPORTANT: Has to be the last
+    // { path: '**', redirectTo: '/not-found'} // wildcard route - ORDER IMPORTANT: Has to be the last
+    { path: '**', component: ErrorPageComponent, data: {message: 'Page Not Found'}}
   ];
 
 @NgModule({
